@@ -1,13 +1,48 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, SafeAreaView, View, TouchableOpacity } from 'react-native';
+import { ImageBackground } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-export default function HomeScreen() {
+export default function LoginModal1() {
   return (
-    <ParallaxScrollView
+    <ImageBackground source={require('@/assets/images/Background-1.png')} style={styles.backgroundImage}>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={() => console.log('Login')} style={styles.LoginButton}>
+          <ThemedText type="defaultSemiBold">Log in</ThemedText>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
+  );
+}
+
+const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: "flex-end",
+    alignSelf: 'center',
+  },
+  LoginButton: {
+    backgroundColor: '#A1CEDC',
+    padding: 20,
+    borderRadius: 10,
+    aspectRatio: 10 / 2,
+    width: '80%',
+    alignItems: 'center',
+  },
+});
+
+
+/**
+ *     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
@@ -47,24 +82,4 @@ export default function HomeScreen() {
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
-  );
-}
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+ */
